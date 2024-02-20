@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.bs23.simpleecommerce: DEBUG
+    com.bs23.simpleapp: DEBUG
 
 management:
   zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
@@ -38,27 +38,11 @@ spring:
   jackson:
     serialization:
       indent-output: true
-  cloud:
-    consul:
-      config:
-        fail-fast: false # if not in "prod" profile, do not force to use Spring Cloud Config
-        format: yaml
-        profile-separator: '-'
-      discovery:
-        prefer-ip-address: true
-        tags:
-          - profile=${spring.profiles.active}
-          - version=#project.version#
-          - git-version=${git.commit.id.describe:}
-          - git-commit=${git.commit.id.abbrev:}
-          - git-branch=${git.branch:}
-      host: localhost
-      port: 8500
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/simpleEcommerce?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/simpleecommerce?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
     username: root
-    password:
+    password: abAdmin
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -98,7 +82,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: OTYzZDViZGQzNTJkN2ZlN2EyZmVkMzZlZjkxZjg2MjczNzllNDk2ZTdkMTBkMzM5MDE1ZDlhMTZmOTE2MzQ4YmY1MGE2NTU3NTMxODAzMDY1N2E4NDE2NzdlYTUwZDA1ZGRhZmRiODJkMmE2ZGY2MjM4ZWQ2M2E5N2YyMzQ1NWU=
+        base64-secret: ZjU5ZmMwOWE5ZGVmNTY0NWIwMWM2ZThhOGY5ZTQ2ZTc1NDQwY2NiZDYyODJkYTE5M2NlNmY1YjU3M2YzYTYwZGY1ZjIyZjQ3ZmU1NDRhNGVhZDdkYzQ5ZTVmOGEyNWU5ZTEyMzUzZTJlOTQ5ODc1YmFkNTY0MDA0MzM0NDcxMmE=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

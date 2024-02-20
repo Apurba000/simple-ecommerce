@@ -1,7 +1,7 @@
 apply plugin: "war"
 
 bootWar {
-    mainClass = "com.bs23.simpleecommerce.SimpleEcommerceApp"
+    mainClass = "com.bs23.simpleapp.SimpleecommerceApp"
     includes = ["WEB-INF/**", "META-INF/**"]
 }
 

@@ -15,7 +15,7 @@ plugins {
     // jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
-group = "com.bs23.simpleecommerce"
+group = "com.bs23.simpleapp"
 version = "0.0.1-SNAPSHOT"
 
 description = ""
@@ -93,7 +93,7 @@ eclipse {
 defaultTasks "bootRun"
 
 springBoot {
-    mainClass = "com.bs23.simpleecommerce.SimpleEcommerceApp"
+    mainClass = "com.bs23.simpleapp.SimpleecommerceApp"
 }
 
 test {
@@ -205,9 +205,6 @@ dependencies {
     implementation "org.springframework.cloud:spring-cloud-starter"
     implementation "org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j"
     implementation "org.springframework.retry:spring-retry"
-    implementation "org.springframework.cloud:spring-cloud-starter-bootstrap"
-    implementation "org.springframework.cloud:spring-cloud-starter-consul-discovery"
-    implementation "org.springframework.cloud:spring-cloud-starter-consul-config"
     implementation "org.springframework.security:spring-security-data"
     implementation "io.micrometer:micrometer-registry-prometheus"
     implementation "io.dropwizard.metrics:metrics-core"

@@ -1,2 +1,2 @@
-org.springframework.test.context.ContextCustomizerFactory = com.bs23.\
-    simpleecommerce.config.SqlTestContainersSpringContextCustomizerFactory
+org.springframework.test.context.ContextCustomizerFactory = com.bs23.simpleapp.\
+    config.SqlTestContainersSpringContextCustomizerFactory

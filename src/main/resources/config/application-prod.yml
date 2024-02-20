@@ -17,7 +17,7 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    com.bs23.simpleecommerce: INFO
+    com.bs23.simpleapp: INFO
 
 management:
   prometheus:
@@ -37,17 +37,11 @@ spring:
       enabled: false
     livereload:
       enabled: false
-  cloud:
-    consul:
-      discovery:
-        prefer-ip-address: true
-      host: localhost
-      port: 8500
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/simpleEcommerce?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/simpleecommerce?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
     username: root
-    password:
+    password: abAdmin
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -107,7 +101,7 @@ jhipster:
         # - In the Consul configserver
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: OTYzZDViZGQzNTJkN2ZlN2EyZmVkMzZlZjkxZjg2MjczNzllNDk2ZTdkMTBkMzM5MDE1ZDlhMTZmOTE2MzQ4YmY1MGE2NTU3NTMxODAzMDY1N2E4NDE2NzdlYTUwZDA1ZGRhZmRiODJkMmE2ZGY2MjM4ZWQ2M2E5N2YyMzQ1NWU=
+        base64-secret: ZjU5ZmMwOWE5ZGVmNTY0NWIwMWM2ZThhOGY5ZTQ2ZTc1NDQwY2NiZDYyODJkYTE5M2NlNmY1YjU3M2YzYTYwZGY1ZjIyZjQ3ZmU1NDRhNGVhZDdkYzQ5ZTVmOGEyNWU5ZTEyMzUzZTJlOTQ5ODc1YmFkNTY0MDA0MzM0NDcxMmE=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
