@@ -22,7 +22,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link com.bs23.simpleapp.domain.Order}.
  */
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/test/api/orders")
 public class OrderResource {
 
     private final Logger log = LoggerFactory.getLogger(OrderResource.class);
@@ -41,13 +41,6 @@ public class OrderResource {
         this.orderRepository = orderRepository;
     }
 
-    /**
-     * {@code POST  /orders} : Create a new order.
-     *
-     * @param order the order to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new order, or with status {@code 400 (Bad Request)} if the order has already an ID.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PostMapping("")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) throws URISyntaxException {
         log.debug("REST request to save Order : {}", order);
@@ -56,35 +49,17 @@ public class OrderResource {
         }
         Order result = orderService.save(order);
         return ResponseEntity
-            .created(new URI("/api/orders/" + result.getId()))
+            .created(new URI("/test/api/orders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
-    /**
-     * {@code PUT  /orders/:id} : Updates an existing order.
-     *
-     * @param id the id of the order to save.
-     * @param order the order to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated order,
-     * or with status {@code 400 (Bad Request)} if the order is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the order couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable(value = "id", required = false) final UUID id, @RequestBody Order order)
         throws URISyntaxException {
         log.debug("REST request to update Order : {}, {}", id, order);
-        if (order.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
-        if (!Objects.equals(id, order.getId())) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
-        }
 
-        if (!orderRepository.existsById(id)) {
-            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
-        }
+        RestUtil.check(id, order.getId(), ENTITY_NAME, orderRepository);
 
         Order result = orderService.update(order);
         return ResponseEntity
@@ -93,31 +68,12 @@ public class OrderResource {
             .body(result);
     }
 
-    /**
-     * {@code PATCH  /orders/:id} : Partial updates given fields of an existing order, field will ignore if it is null
-     *
-     * @param id the id of the order to save.
-     * @param order the order to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated order,
-     * or with status {@code 400 (Bad Request)} if the order is not valid,
-     * or with status {@code 404 (Not Found)} if the order is not found,
-     * or with status {@code 500 (Internal Server Error)} if the order couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<Order> partialUpdateOrder(@PathVariable(value = "id", required = false) final UUID id, @RequestBody Order order)
         throws URISyntaxException {
         log.debug("REST request to partial update Order partially : {}, {}", id, order);
-        if (order.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
-        if (!Objects.equals(id, order.getId())) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
-        }
 
-        if (!orderRepository.existsById(id)) {
-            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
-        }
+        RestUtil.check(id, order.getId(), ENTITY_NAME, orderRepository);
 
         Optional<Order> result = orderService.partialUpdate(order);
 
@@ -127,23 +83,12 @@ public class OrderResource {
         );
     }
 
-    /**
-     * {@code GET  /orders} : get all the orders.
-     *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of orders in body.
-     */
     @GetMapping("")
     public List<Order> getAllOrders() {
         log.debug("REST request to get all Orders");
         return orderService.findAll();
     }
 
-    /**
-     * {@code GET  /orders/:id} : get the "id" order.
-     *
-     * @param id the id of the order to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the order, or with status {@code 404 (Not Found)}.
-     */
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrder(@PathVariable("id") UUID id) {
         log.debug("REST request to get Order : {}", id);
@@ -151,12 +96,6 @@ public class OrderResource {
         return ResponseUtil.wrapOrNotFound(order);
     }
 
-    /**
-     * {@code DELETE  /orders/:id} : delete the "id" order.
-     *
-     * @param id the id of the order to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable("id") UUID id) {
         log.debug("REST request to delete Order : {}", id);
