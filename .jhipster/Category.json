@@ -1,0 +1,24 @@
+{
+  "annotations": {
+    "changelogDate": "20240220110102"
+  },
+  "applications": "*",
+  "clientRootFolder": "simpleecommerce",
+  "databaseType": "sql",
+  "entityTableName": "category",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "categoryName",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "simpleecommerce",
+  "name": "Category",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,45 @@
+
+
+
+
+entity Product {
+    id UUID
+    name String
+    unitPrice BigDecimal
+    description String
+    imageUrl String
+}
+
+entity Category {
+	id UUID
+	categoryName String
+}
+
+entity Order {
+	id UUID
+    totalAmount BigDecimal
+    orderDate String
+    deliveryAddress String
+}
+
+//relationship OneToMany {
+//    Category{id} to Product
+//    Order{id} to Product
+//}
+//relationship OneToMany {
+//    Order{id} to Product
+//}
+//
+//relationship ManyToOne {
+//    Product{id} to Category
+//}
+//
+//relationship ManyToOne {
+//    Product{id} to Category
+//}
+
+// Set pagination options
+paginate Product with pagination
+
+service all with serviceImpl
+

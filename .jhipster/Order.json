@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20240220110202"
+  },
+  "applications": "*",
+  "clientRootFolder": "simpleecommerce",
+  "databaseType": "sql",
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "orderDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "deliveryAddress",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "simpleecommerce",
+  "name": "Order",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
